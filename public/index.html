@@ -233,6 +233,32 @@ h2 { font: 400 clamp(1.6rem, 5vw, 2.5rem)/1.05 var(--fonte-titulo); color: var(-
 .redes a:hover { border-color: var(--cor-marca); }
 .redes svg { width: 18px; height: 18px; }
 
+/* Avaliações */
+.avaliacoes { display: grid; grid-template-columns: .8fr 2fr; gap: 16px; align-items: stretch; }
+.avaliacoes > * { min-width: 0; }
+.nota { display: grid; place-content: center; justify-items: center; gap: 6px; padding: 26px; border-radius: var(--raio); background: var(--cor-roxo); text-align: center; }
+.nota b { font: 400 4rem/1 var(--fonte-titulo); color: var(--cor-marca); }
+.nota small { color: #e6dcff; }
+.estrelas { color: var(--cor-marca); letter-spacing: 2px; font-size: 1.1rem; }
+.lista-aval { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.aval { margin: 0; padding: 22px; border-radius: var(--raio); background: var(--cor-painel); border: 1px solid var(--cor-linha); display: flex; flex-direction: column; gap: 12px; }
+.aval blockquote { margin: 0; color: var(--cor-texto); font-size: .97rem; line-height: 1.55; flex: 1; }
+.aval figcaption { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: .92rem; }
+.aval figcaption i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--cor-destaque); color: #fff; font-style: normal; }
+.aval figcaption small { display: block; font-weight: 400; color: var(--cor-suave); }
+@media (max-width: 900px) {
+  .avaliacoes { grid-template-columns: 1fr; }
+  .lista-aval { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 85%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .lista-aval::-webkit-scrollbar { display: none; }
+  .aval { scroll-snap-align: start; }
+}
+
+/* Mapa */
+.mapa { margin-top: 16px; border-radius: var(--raio); overflow: hidden; border: 1px solid var(--cor-linha); background: var(--cor-painel); }
+.mapa iframe { display: block; width: 100%; height: 320px; border: 0; }
+.mapa .acoes { padding: 16px; justify-content: space-between; align-items: center; }
+.mapa .acoes p { margin: 0; color: var(--cor-suave); }
+
 footer.rodape-site { padding-block: 26px 110px; font-size: .85rem; color: var(--cor-suave); border-top: 1px solid var(--cor-linha); }
 footer.rodape-site .miolo { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
@@ -266,6 +292,7 @@ footer.rodape-site .miolo { display: flex; justify-content: space-between; gap: 
     <nav aria-label="Principal">
       <a href="#cardapio">Cardápio</a>
       <a href="#casa">A casa</a>
+      <a href="#avaliacoes">Avaliações</a>
       <a href="#onde">Onde estamos</a>
       <button class="botao-sacola" type="button" data-abre-pedido aria-label="Ver pedido">
         <svg aria-hidden="true"><use href="#i-sacola"/></svg><span class="qtd" data-qtd>0</span>
@@ -339,13 +366,47 @@ footer.rodape-site .miolo { display: flex; justify-content: space-between; gap: 
         <p class="sobretitulo">A casa</p>
         <h2>Feito por quem é fã</h2>
         <!-- [CLIENTE] confirmar a história com o dono -->
-        <p>O The Geek junta duas paixões: hambúrguer caprichado e o universo dos games, filmes, séries e quadrinhos. Cada lanche tem nome de herói, tem coquetel pra acompanhar e cardápio infantil pra trazer a família. Burger and fun.</p>
+        <p>O The Geek junta duas paixões: hambúrguer caprichado e o universo dos games, filmes, séries e quadrinhos. Cada lanche tem nome de herói, e enquanto ele fica pronto tem jogo na mesa pra galera se divertir. Tem coquetel pra acompanhar e cardápio infantil pra trazer a família. Burger and fun.</p>
       </div>
       <div class="conquistas revela">
         <div class="conquista"><b>2019</b><span>no jogo em Jundiaí</span></div>
         <div class="conquista"><b>26 mil</b><span>seguidores no Instagram</span></div>
         <div class="conquista"><b>180g</b><span>de hambúrguer artesanal</span></div>
         <div class="conquista"><b>6 dias</b><span>por semana, de terça a domingo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao faixa" id="avaliacoes" style="border-top:1px solid var(--cor-linha)">
+    <div class="miolo">
+      <div class="cabeca revela">
+        <p class="sobretitulo">Avaliações no Google</p>
+        <h2>Quem joga, recomenda</h2>
+      </div>
+      <!-- Avaliações reais do Google (outubro/2026) -->
+      <div class="avaliacoes revela">
+        <div class="nota">
+          <b>4,4</b>
+          <span class="estrelas" aria-hidden="true">★★★★★</span>
+          <small>447 avaliações no Google</small>
+        </div>
+        <div class="lista-aval">
+          <figure class="aval">
+            <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+            <blockquote>Volto por um milhão de vezes. No The Geek Burger a diversão é garantida, e não há palavras que descrevam o sabor dos lanches e batata. O valor é super compatível e vale muito a pena.</blockquote>
+            <figcaption><i aria-hidden="true">M</i><span>Mariana Amorim<small>Local Guide</small></span></figcaption>
+          </figure>
+          <figure class="aval">
+            <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+            <blockquote>Um ambiente super agradável, lanche saboroso, atendimento super agradável. Enquanto esperamos os lanches, eles oferecem jogos para nos divertir. Zero telas! Super recomendo.</blockquote>
+            <figcaption><i aria-hidden="true">F</i><span>Flávia Dantielle<small>Avaliação no Google</small></span></figcaption>
+          </figure>
+          <figure class="aval">
+            <span class="estrelas" aria-label="5 estrelas">★★★★★</span>
+            <blockquote>Lanche surpreendente, muito bom e bem servido! Os jogos são bem legais e dão uma ótima resenha, e o pessoal que coloca a música tem um ótimo gosto musical! 10/10</blockquote>
+            <figcaption><i aria-hidden="true">R</i><span>Ryan Valentim<small>Local Guide</small></span></figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -360,7 +421,7 @@ footer.rodape-site .miolo { display: flex; justify-content: space-between; gap: 
         <div class="cartao">
           <h3>Endereço</h3>
           <p>Av. Dr. Odil Campos de Sáes, 15<br>Jardim São Bento, Jundiaí-SP</p>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=The+Geek+Burger+Av.+Dr.+Odil+Campos+de+S%C3%A1es+15+Jundia%C3%AD" target="_blank" rel="noopener">Abrir no Google Maps</a></p>
+          <p><a href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Geek+Burger+Av.+Dr.+Odil+Campos+de+S%C3%A1es+15+Jundia%C3%AD" target="_blank" rel="noopener">Como chegar</a></p>
         </div>
         <div class="cartao">
           <h3>Horário</h3>
@@ -378,6 +439,13 @@ footer.rodape-site .miolo { display: flex; justify-content: space-between; gap: 
             <a href="https://www.instagram.com/thegeekburger.br/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-insta"/></svg> Instagram</a>
             <a href="https://www.facebook.com/thegeekburgers/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-face"/></svg> Facebook</a>
           </div>
+        </div>
+      </div>
+      <div class="mapa revela">
+        <iframe src="https://www.google.com/maps?q=Av.+Dr.+Odil+Campos+de+S%C3%A1es,+15+-+Jardim+S%C3%A3o+Bento,+Jundia%C3%AD+-+SP&amp;output=embed" title="Mapa do The Geek Burger" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="acoes">
+          <p>Av. Dr. Odil Campos de Sáes, 15 · Jardim São Bento</p>
+          <a class="botao botao-amarelo" href="https://www.google.com/maps/dir/?api=1&amp;destination=The+Geek+Burger+Av.+Dr.+Odil+Campos+de+S%C3%A1es+15+Jundia%C3%AD" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-mapa"/></svg> Como chegar</a>
         </div>
       </div>
     </div>
